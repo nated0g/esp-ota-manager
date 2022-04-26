@@ -44,7 +44,7 @@ export default function DevicesPage() {
                 <img className="h-10 w-10 rounded-full" src="" alt="" />
               </div>
               <div className="flex-1 min-w-0">
-                <a href={"/device-types/" + deviceType.name} className="focus:outline-none">
+                <a href={"/devices/" + deviceType.name} className="focus:outline-none">
                   <span className="absolute inset-0" aria-hidden="true" />
                   <p className="text-sm font-medium text-gray-900">{deviceType.name}</p>
                   <p className="text-sm text-gray-500 truncate">{deviceType.vendor_mcu_id}</p>

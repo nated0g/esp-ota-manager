@@ -13,7 +13,7 @@ interface Callback {
 }
 
 export const db = {
-  query: (text:string, params: any[] = [], callback: Callback) => {
+  query: (text:string, params: any[] = [], callback: Callback | undefined) => {
     return pool.query(text, params, callback);
   },
 };             
