@@ -44,12 +44,14 @@ export default function DevicesPage() {
                 <img className="h-10 w-10 rounded-full" src="" alt="" />
               </div>
               <div className="flex-1 min-w-0">
-                <a href={"/devices/" + deviceType.name} className="focus:outline-none">
-                  <span className="absolute inset-0" aria-hidden="true" />
-                  <p className="text-sm font-medium text-gray-900">{deviceType.name}</p>
-                  <p className="text-sm text-gray-500 truncate">{deviceType.vendor_mcu_id}</p>
-                  <p className="text-sm text-gray-500 truncate">Number of devices: {deviceType.number_of_devices}</p>
-                </a>
+                <Link href={"/devices/" + deviceType.name} className="focus:outline-none">
+                  <a>
+                    <span className="absolute inset-0" aria-hidden="true" />
+                    <p className="text-sm font-medium text-gray-900">{deviceType.name}</p>
+                    <p className="text-sm text-gray-500 truncate">{deviceType.vendor_mcu_id}</p>
+                    <p className="text-sm text-gray-500 truncate">Number of devices: {deviceType.number_of_devices}</p>
+                  </a>
+                </Link>
               </div>
             </div>
           ))}
@@ -58,10 +60,12 @@ export default function DevicesPage() {
             className="relative rounded-lg hover:transition-all hover:bg-opacity-40 bg-gray-500 bg-opacity-10 px-6 py-5 shadow-sm flex items-center space-x-3 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
           >
             <div className="flex-1 min-w-0">
-              <a href="/devices/new" className="focus:outline-none">
-                <span className="absolute inset-0" aria-hidden="true" />
-                <p className="text-sm font-medium text-gray-900">Add New Device</p>
-              </a>
+              <Link href="/devices/new">
+                <a className="focus:outline-none">
+                  <span className="absolute inset-0" aria-hidden="true" />
+                  <p className="text-sm font-medium text-gray-900">Add New Device</p>
+                </a>
+              </Link>
             </div>
           </div>
         </div>

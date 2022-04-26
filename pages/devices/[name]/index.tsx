@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 /* This example requires Tailwind CSS v2.0+ */
-import Layout from '../../components/common/Layout'
+import Layout from '../../../components/common/Layout'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -96,7 +96,7 @@ export default function DevicesPage() {
                     </thead>
                     <tbody className="divide-y divide-gray-200 bg-white">
                       {devices.map((device) => (
-                        <tr key={device.id}>
+                        <tr key={device.id} className="hover:bg-slate-50">
                           <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                             {device.name}
                           </td>
@@ -104,7 +104,7 @@ export default function DevicesPage() {
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{device.uuid}</td>
                           <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{device.id}</td>
                           <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                            <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                            <a href={name + "/" + device.id} className="text-indigo-600 hover:text-indigo-900">
                               Edit
                             </a>
                           </td>
