@@ -8,6 +8,7 @@ import {
   XIcon,
 } from '@heroicons/react/outline'
 
+import { useSession, getSession} from 'next-auth/react'
 
 interface Link {
   name: string
@@ -25,7 +26,7 @@ function classNames(...classes: any[]) {
 }
 
 export const Navbar: FC<NavbarProps> = ({ links }) => {
-
+  const { data: session, status } = useSession()
   return (
     <>
       <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
@@ -62,7 +63,29 @@ export const Navbar: FC<NavbarProps> = ({ links }) => {
                 </Link>
               ))}
             </nav>
+            {/* <pre>{JSON.stringify(session, null, 2)}</pre> */}
           </div>
+          {session ?
+            <>
+              <div className="flex-shrink-0 flex bg-gray-700 p-4">
+                <a href="/api/auth/signout" className="flex-shrink-0 w-full group block">
+                  <div className="flex items-center">
+                    <div>
+                      <img
+                        className="inline-block h-9 w-9 rounded-full"
+                        src={session.user?.image}
+                        alt=""
+                      />
+                    </div>
+                    <div className="ml-3">
+                      <p className="text-sm font-medium text-white">{session.user?.name}</p>
+                      <p className="text-xs font-medium text-gray-300 group-hover:text-gray-200">Sign Out</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </>
+            :[]}
         </div>
       </div>
     </>

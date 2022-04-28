@@ -5,6 +5,9 @@ import Link from 'next/link'
 /* This example requires Tailwind CSS v2.0+ */
 import { Navbar, NavbarProps } from "../Navbar"
 import { useEffect, SVGProps} from 'react'
+import { useSession } from 'next-auth/react'
+import AccessDenied from '../../AccessDenied'
+
 
 import {
   CalendarIcon,
@@ -35,7 +38,7 @@ function setCurrent(name: string): Link[] {
   const navigation = [
     { name: 'Dashboard', href: '/', icon: ChartBarIcon, current: false },
     { name: 'Devices', href: '/devices', icon: ChipIcon, current: false },
-    { name: 'Projects', href: '/projects', icon: FolderIcon, current: false },
+    { name: 'Repos', href: '/repos', icon: FolderIcon, current: false },
     { name: 'Firmware', href: '/firmware', icon: CodeIcon, current: false },
     { name: 'Settings', href: '/settings', icon: CogIcon, current: false },
   ].map((e) => {
@@ -46,7 +49,7 @@ function setCurrent(name: string): Link[] {
 }
 
 const Layout: React.FC<LayoutProps> = (props) => {
-
+  const { data: session, status } = useSession()
   const navigation = setCurrent(props.current)
   return (
     <>
@@ -65,7 +68,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
                 <h3 className="text-lg leading-6 font-medium text-gray-900">{props.current}</h3>
               </div>
               <div className="py-10">
-                {props.children}
+                {session ? props.children : <AccessDenied/>}
               </div>
             </div>
           </main>

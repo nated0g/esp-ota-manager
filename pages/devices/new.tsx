@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 /* This example requires Tailwind CSS v2.0+ */
 import Layout from '../../components/common/Layout'
-import { SdkConfigSelector, ChipSelector, Chips } from '../../components/forms'
+import { SdkConfigSelector, ChipSelector, Chips, RepoSelector} from '../../components/forms'
 import { Router } from 'next/router'
 
 import { useEffect, useState } from 'react'
@@ -21,6 +21,7 @@ export default function NewDevice() {
   const [selectedConfig, setSelectedConfig] = useState({});
   const [chip, setChip] = useState(Chips[0]);
   const [deviceName, setDeviceName] = useState("");
+  const [repo, setRepo] = useState("");
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
@@ -78,6 +79,10 @@ export default function NewDevice() {
                       <ChipSelector chips={Chips} chip={chip} setChip={setChip} />
                     </div>
 
+                    <div className="col-span-2">
+                      <RepoSelector repo={repo} setRepo={setRepo} />
+                    </div>
+                    
                     <div className="col-span-2">
                       <SdkConfigSelector selectedConfig={selectedConfig} setSelectedConfig={setSelectedConfig} fieldname="default_sdk_config" label="Default SDK Config" />
                     </div>
