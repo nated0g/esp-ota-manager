@@ -3,4 +3,7 @@ CREATE TABLE IF NOT EXISTS device_type (
   default_sdk_config integer REFERENCES sdk_config(id),
   vendor_mcu_id varchar(20),
   metadata json
-)
+);
+
+ALTER TABLE device_type 
+  ADD repo varchar(100);

@@ -32,9 +32,7 @@ export default function Home() {
   return (
     <>
     <Layout current="Dashboard">
-      <pre>
-      {repos ? JSON.stringify(repos, null, 2) : ''}
-      </pre>
+      <div>Dashboard</div>
     </Layout>
     </>
   )

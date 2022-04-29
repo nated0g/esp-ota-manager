@@ -31,7 +31,8 @@ export default function NewDevice() {
       body: JSON.stringify({
         default_sdk_config: selectedConfig.id,
         vendor_mcu_id: chip,
-        name: deviceName
+        name: deviceName,
+        repo: repo.full_name
       }),
     })
     router.push('/devices');
@@ -75,15 +76,15 @@ export default function NewDevice() {
                       </div>
                     </div>
 
-                    <div className="col-span-2">
+                    <div className="col-span-3">
                       <ChipSelector chips={Chips} chip={chip} setChip={setChip} />
                     </div>
 
-                    <div className="col-span-2">
+                    <div className="col-span-3">
                       <RepoSelector repo={repo} setRepo={setRepo} />
                     </div>
                     
-                    <div className="col-span-2">
+                    <div className="col-span-3">
                       <SdkConfigSelector selectedConfig={selectedConfig} setSelectedConfig={setSelectedConfig} fieldname="default_sdk_config" label="Default SDK Config" />
                     </div>
 

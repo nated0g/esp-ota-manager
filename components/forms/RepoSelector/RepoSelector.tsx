@@ -64,7 +64,7 @@ const RepoSelector: React.FC<SdkConfigSelectorProps> = (props) => {
           onChange={(event) => {
             return event.target.value
           }}
-          displayValue={(repo) => repo?.name}
+          displayValue={(repo) => repo?.full_name}
           
         />
         <Combobox.Button className="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
@@ -87,7 +87,7 @@ const RepoSelector: React.FC<SdkConfigSelectorProps> = (props) => {
                 {({ active, selected }) => (
                   <>
                     <div className="flex">
-                      <span className={classNames(selected && 'font-semibold')}>{repo.name}</span>
+                      <span className={classNames(selected && 'font-semibold')}>{repo.full_name}</span>
                       <span
                         className={classNames(
                           'ml-2 truncate text-gray-500',

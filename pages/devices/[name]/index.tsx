@@ -46,6 +46,9 @@ export default function DevicesPage() {
             <div className="sm:flex-auto">
               <h1 className="text-xl font-semibold text-gray-900">{deviceType.name}</h1>
               <p className="mt-2 text-sm text-gray-700">
+                {deviceType.repo}
+              </p>
+              <p className="mt-2 text-sm text-gray-700">
                 {deviceType.vendor_mcu_id}
               </p>
             </div>

@@ -15,7 +15,7 @@ type Data = DeviceType[] | string
 let count = 0;
 
 let postQuery =
-  "INSERT INTO device_type (name, default_sdk_config, vendor_mcu_id, metadata) VALUES ($1, $2, $3, $4)";
+  "INSERT INTO device_type (name, default_sdk_config, vendor_mcu_id, repo) VALUES ($1, $2, $3, $4)";
 
 let getQuery = `
   SELECT device_type.*, count(device.device_type) as number_of_devices 
@@ -31,7 +31,7 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     const data = req.body;
-    await db.query(postQuery, [data.name, data.default_sdk_config, data.vendor_mcu_id, null], (qErr, qRes) => {
+    await db.query(postQuery, [data.name, data.default_sdk_config, data.vendor_mcu_id, data.repo], (qErr, qRes) => {
       if (qErr) throw qErr;
       res.status(201).send('OK');
     })
